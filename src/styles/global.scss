@@ -9,6 +9,7 @@
 
   --gray-100: #e1e1e1;
   --gray-300: #a8a8b3;
+  --gray-800: #29292e;
   --gray-900: #121214;
 
   --cyan-500: #61dafb;
@@ -40,9 +41,11 @@ body, input, textarea, select, button {
 button {
   cursor: pointer;
   outline: none;
+  transition: all 0.2s;
 }
 
 a {
   color: inherit; // assume a cor do texto
   text-decoration: none;
+  transition: all 0.2s;
 }
