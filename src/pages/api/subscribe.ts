@@ -10,6 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const stripeCustomer = await stripe.customers.create({
       email: session.user.email
+      // metadata
     })
 
     const stripeCheckoutSession = await stripe.checkout.sessions.create({
@@ -30,6 +31,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   } else {
     res.setHeader('Allow', 'POST')
-    res.status(405).send('Method not allowed')
+    res.status(405).end('Method not allowed')
   }
 }
