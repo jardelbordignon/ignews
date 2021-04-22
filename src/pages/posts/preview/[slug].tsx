@@ -57,9 +57,7 @@ export default function PreviewPost({ post }: PreviewPostProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [{
-      params: { slug: 'construindo-app-com-mapa-usando-react-native-maps-e' }
-    }],
+    paths: [],
     fallback: 'blocking'
   }
 }
