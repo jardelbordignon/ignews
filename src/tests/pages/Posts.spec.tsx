@@ -28,7 +28,7 @@ describe('Posts page', () => {
 
     mockedGetPrimicClient.mockReturnValueOnce({
       query: jest.fn().mockResolvedValueOnce({
-        resutls: [
+        results: [
           {
             uid: 'my-new-post',
             data: {
