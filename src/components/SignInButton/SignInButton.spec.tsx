@@ -6,7 +6,7 @@ import { SignInButton } from '.'
 
 jest.mock('next-auth/client')
 
-describe('SignInButton', () => {
+describe('SignInButton component', () => {
 
   it('renders correctly when user is not authenticated', () => {
     const mockedUseSession = mocked(useSession)
