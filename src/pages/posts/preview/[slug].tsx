@@ -5,7 +5,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { RichText } from 'prismic-dom'
 
-import { getPrimicClient } from '../../../services/prismic'
+import { getPrismicClient } from '../../../services/prismic'
 import styles from '../post.module.scss'
 import { useRouter } from 'next/router'
 
@@ -65,7 +65,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params
 
-  const prismic = getPrimicClient()
+  const prismic = getPrismicClient()
 
   const response = await prismic.getByUID('post', String(slug), {})
 

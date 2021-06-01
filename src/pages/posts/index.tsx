@@ -4,7 +4,7 @@ import Prismic from '@prismicio/client'
 import { RichText } from 'prismic-dom'
 import Link from 'next/link'
 
-import { getPrimicClient } from '../../services/prismic'
+import { getPrismicClient } from '../../services/prismic'
 import styles from './styles.module.scss'
 
 interface Post {
@@ -46,7 +46,7 @@ export default function Posts({ posts }: PostsProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const prismic = getPrimicClient()
+  const prismic = getPrismicClient()
 
   const response = await prismic.query([
     Prismic.Predicates.at('document.type', 'post')

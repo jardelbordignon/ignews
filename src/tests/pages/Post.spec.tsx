@@ -3,7 +3,7 @@ import { mocked } from 'ts-jest/utils'
 import { getSession } from 'next-auth/client'
 
 import Post, { getServerSideProps } from '../../pages/posts/[slug]'
-import { getPrimicClient } from '../../services/prismic'
+import { getPrismicClient } from '../../services/prismic'
 
 jest.mock('next-auth/client')
 jest.mock('../../services/prismic')
@@ -41,10 +41,10 @@ describe('Post page', () => {
 
 
   it('loads inital data in getServerSideProps', async () => {
-    const mockedGetPrimicClient = mocked(getPrimicClient)
+    const mockedGetPrismicClient = mocked(getPrismicClient)
     const mockedGetSession = mocked(getSession)
 
-    mockedGetPrimicClient.mockReturnValueOnce({
+    mockedGetPrismicClient.mockReturnValueOnce({
       getByUID: jest.fn().mockResolvedValueOnce({
         data: {
           title: [ { type: 'heading', text: 'My New Post'} ],

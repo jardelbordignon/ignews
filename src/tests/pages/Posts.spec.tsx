@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { mocked } from 'ts-jest/utils'
 
-import { getPrimicClient } from '../../services/prismic'
+import { getPrismicClient } from '../../services/prismic'
 import Posts, { getStaticProps } from '../../pages/posts'
 
 jest.mock('../../services/prismic')
@@ -24,9 +24,9 @@ describe('Posts page', () => {
 
 
   it('loads inital data in getStaticProps', async () => {
-    const mockedGetPrimicClient = mocked(getPrimicClient)
+    const mockedGetPrismicClient = mocked(getPrismicClient)
 
-    mockedGetPrimicClient.mockReturnValueOnce({
+    mockedGetPrismicClient.mockReturnValueOnce({
       query: jest.fn().mockResolvedValueOnce({
         results: [
           {
