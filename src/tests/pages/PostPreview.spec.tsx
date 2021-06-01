@@ -49,4 +49,36 @@ describe('Post Preview page', () => {
     expect(pushMocked).toHaveBeenCalledWith('/posts/my-new-post')
   })
 
+  it('loads data in getStaticProps', async () => {
+      const mockedGetPrismicClient = mocked(getPrismicClient)
+  
+      mockedGetPrismicClient.mockReturnValueOnce({
+        getByUID: jest.fn().mockResolvedValueOnce({
+          data: {
+            title: [ { type: 'heading', text: 'My New Post'} ],
+            content: [ { type: 'paragraph', text: 'Post content' } ],
+          },
+          last_publication_date: '05-31-2021'
+        })
+      } as any)
+  
+      const response = await getStaticProps({
+        params: { slug: 'my-new-post' }
+      })
+  
+      expect(response).toEqual(
+        expect.objectContaining({
+          props: {
+            post: {
+              slug: 'my-new-post',
+              title: 'My New Post',
+              content: '<p>Post content</p>',
+              updatedAt: '31 de maio de 2021'
+            }
+          }
+        })
+      )
+  
+    })
+
 })
