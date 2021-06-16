@@ -2,7 +2,9 @@ import { GetServerSideProps } from 'next'
 import { getSession } from 'next-auth/client'
 import Head from 'next/head'
 import { RichText } from 'prismic-dom'
+
 import { getPrismicClient } from '../../services/prismic'
+import Comments from '../../components/Comments'
 
 import styles from './post.module.scss'
 
@@ -31,6 +33,8 @@ export default function Post({ post }: PostProps) {
             dangerouslySetInnerHTML={{__html: post.content }}
           />
         </article>
+
+        <Comments />
       </main>
     </>
   )
